@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker-agent' } // used the agent that I made earlier
+    agent { label 'docker-agent' } // used the agent that I made earlier on host Jenkins
     
     environment {
         // Define your environment variable for docker-compose file location
