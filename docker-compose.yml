@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  python-app:
+    build: .
+    container_name: python-app
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/myapp.conf:/etc/nginx/myapp.conf
+      - ./ssl/selfsigned.crt:/etc/nginx/ssl/selfsigned.crt
+      - ./ssl/selfsigned.key:/etc/nginx/ssl/selfsigned.key
+    ports:
+      - "8123:80"
+    depends_on:
+      - python-app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
