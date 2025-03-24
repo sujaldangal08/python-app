@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Run docker-compose up in detached mode
-                    sh 'docker-compose -f $DOCKER_COMPOSE_FILE up -d'
+                    sh 'docker compose -f $DOCKER_COMPOSE_FILE up -d'
                 }
             }
         }
