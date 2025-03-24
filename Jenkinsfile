@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'docker-agent' }
     
     environment {
         // Define your environment variable for docker-compose file location
